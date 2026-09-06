@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Result Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- Background Animation -->
+
+    <div class="background">
+
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+
+    </div>
+
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <div class="icon">🎓</div>
+
+            <h1>Student Result Analyzer</h1>
+
+            <p>
+                Enter your marks to calculate your overall performance
+            </p>
+
+        </div>
+
+
+        <!-- INPUT CARD -->
+
+        <div class="card">
+
+            <h2>Student Details</h2>
+
+            <form method="POST">
+
+                <label>Student Name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <div class="subjects">
+
+                    <div class="subject">
+
+                        <label>Sub 1</label>
+
+                        <input
+                            type="number"
+                            name="sub1"
+                            placeholder="Enter marks"
+                            min="0"
+                            max="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="subject">
+
+                        <label>Sub 2</label>
+
+                        <input
+                            type="number"
+                            name="sub2"
+                            placeholder="Enter marks"
+                            min="0"
+                            max="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="subject">
+
+                        <label>Sub 3</label>
+
+                        <input
+                            type="number"
+                            name="sub3"
+                            placeholder="Enter marks"
+                            min="0"
+                            max="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="subject">
+
+                        <label>Sub 4</label>
+
+                        <input
+                            type="number"
+                            name="sub4"
+                            placeholder="Enter marks"
+                            min="0"
+                            max="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="subject">
+
+                        <label>Sub 5</label>
+
+                        <input
+                            type="number"
+                            name="sub5"
+                            placeholder="Enter marks"
+                            min="0"
+                            max="100"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit">
+                    Calculate Result
+                    <span>→</span>
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- RESULT -->
+
+        {% if result %}
+
+        <div class="result-card">
+
+            <div class="result-header">
+
+                <span>RESULT</span>
+
+                <span>✓ Calculated</span>
+
+            </div>
+
+
+            <h2>
+                Hello, {{ result.name }}! 👋
+            </h2>
+
+
+            <div class="stats">
+
+                <div class="stat-box">
+
+                    <p>Total Marks</p>
+
+                    <h3>
+                        {{ result.total|int }}/500
+                    </h3>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <p>Average</p>
+
+                    <h3>
+                        {{ result.average }}%
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <!-- GRADE -->
+
+            <div class="grade-box">
+
+                <p class="grade-title">
+                    YOUR FINAL GRADE
+                </p>
+
+
+                <div class="grade-circle">
+
+                    {{ result.grade }}
+
+                </div>
+
+
+                <h3>
+                    {{ result.message }}
+                </h3>
+
+
+                <p class="grade-description">
+
+                    Your grade is calculated based on
+                    your average marks.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+</body>
+
+</html>
